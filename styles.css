@@ -1,0 +1,52 @@
+body {
+  background-image: url("https://i.pinimg.com/originals/b9/b7/8c/b9b78c6a651f6bd2c5872a3d87024a71.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Roboto", sans-serif;
+}
+
+.custom-container {
+  padding: 20px;
+}
+
+.middle-section {
+  max-width: 500px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 25px 30px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-right: auto;
+  margin-left: 5vw;
+}
+
+/* Custom heading colours */
+h1,
+h2 {
+  color: #780000;
+}
+
+/* Custom Form labels and checkbox colours */
+.form-label,
+.form-check-label {
+  color: #003049;
+}
+
+/* Custom submit button colour */
+.btn-primary {
+  background-color: #780000;
+  border-color: #780000;
+}
+
+/* Button Hover */
+input[type="submit"]:hover {
+  background-color: #c1121f !important;
+}
+
+@media (max-width: 768px) {
+  .middle-section {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
