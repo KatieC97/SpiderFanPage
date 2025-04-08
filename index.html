@@ -23,6 +23,8 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css" />
+    <!-- Favicon-->
+    <link rel="icon" href="https://fav.farm/🕸️" />
   </head>
   <body>
     <div
@@ -33,7 +35,8 @@
           Spider-Fan Page
         </h1>
         <h2 class="mb-4">Sign Up</h2>
-        <form id="signup-form">
+
+        <form id="signup-form" novalidate>
           <div class="mb-3 text-start">
             <label for="name" class="form-label text-dark">Name:</label>
             <input
@@ -43,7 +46,9 @@
               name="name"
               required
             />
+            <div class="invalid-feedback">Please enter your name.</div>
           </div>
+
           <div class="mb-3 text-start">
             <label for="email" class="form-label text-dark">Email:</label>
             <input
@@ -53,7 +58,11 @@
               name="email"
               required
             />
+            <div class="invalid-feedback">
+              Please enter a valid email address.
+            </div>
           </div>
+
           <div class="mb-3 text-start">
             <label for="dob" class="form-label text-dark">Date of Birth:</label>
             <input
@@ -63,7 +72,9 @@
               name="dob"
               required
             />
+            <div class="invalid-feedback">Please enter your date of birth.</div>
           </div>
+
           <div class="mb-3 text-start">
             <label for="password" class="form-label text-dark">Password:</label>
             <input
@@ -73,7 +84,11 @@
               name="password"
               required
             />
+            <div class="invalid-feedback">
+              Password must be at least 6 characters and include a number.
+            </div>
           </div>
+
           <div class="form-check mb-4 text-start">
             <input
               class="form-check-input"
@@ -85,7 +100,9 @@
             <label class="form-check-label text-dark" for="terms">
               I accept the terms and conditions
             </label>
+            <div class="invalid-feedback">You must accept the terms.</div>
           </div>
+
           <div class="d-grid">
             <input
               type="submit"
@@ -97,7 +114,10 @@
       </div>
     </div>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript Validation -->
     <script>
       const form = document.getElementById("signup-form");
 
@@ -112,12 +132,12 @@
 
         let isValid = true;
 
-        // Reset classes
+        // Reset previous states
         [name, email, dob, password].forEach((input) => {
           input.classList.remove("is-invalid", "is-valid");
         });
 
-        // Name validation
+        // Name check
         if (name.value.trim() === "") {
           name.classList.add("is-invalid");
           isValid = false;
@@ -125,7 +145,7 @@
           name.classList.add("is-valid");
         }
 
-        // Email validation
+        // Email check
         if (!email.value.includes("@") || email.value.trim() === "") {
           email.classList.add("is-invalid");
           isValid = false;
@@ -133,7 +153,7 @@
           email.classList.add("is-valid");
         }
 
-        // DOB validation
+        // DOB check
         if (dob.value === "") {
           dob.classList.add("is-invalid");
           isValid = false;
@@ -141,15 +161,15 @@
           dob.classList.add("is-valid");
         }
 
-        // Password validation
-        if (password.value.trim().length < 6) {
+        // Password check
+        if (password.value.trim().length < 6 || !/[0-9]/.test(password.value)) {
           password.classList.add("is-invalid");
           isValid = false;
         } else {
           password.classList.add("is-valid");
         }
 
-        // Terms checkbox validation
+        // Terms check
         if (!terms.checked) {
           terms.classList.add("is-invalid");
           isValid = false;
@@ -157,9 +177,11 @@
           terms.classList.remove("is-invalid");
         }
 
-        // Final check
+        // If details are all good, show SpiderVerse confirmation and reset
         if (isValid) {
-          alert("Welcome to the Spider-Verse, true believer!");
+          alert(
+            "Welcome to the Spider-Verse! You're now officially part of the team."
+          );
           form.reset();
           [name, email, dob, password].forEach((input) =>
             input.classList.remove("is-valid")
